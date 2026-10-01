@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tienda de Ropa — Inventario</title>
+    <style>
+        body { font-family: Segoe UI, Arial, sans-serif; background: #f4f4f4; color: #333; margin: 0; padding: 30px; }
+        h1 { color: #236681; }
+        table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+        th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: #236681; color: white; }
+        tr:nth-child(even) { background: #fafafa; }
+        .oferta { color: #D97757; font-weight: bold; }
+        .resumen { margin-top: 24px; background: white; padding: 18px 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.1); display: inline-block; }
+        .resumen p { margin: 6px 0; font-size: 1.1em; }
+    </style>
+</head>
+<body>
+    <h1>Tienda de Ropa — Inventario</h1>
+ 
+    <table>
+        <thead>
+            <tr>
+                <th>Prenda</th><th>Categoría</th><th>Talla</th>
+                <th>Precio final</th><th>Stock</th><th>Ingreso</th><th>Oferta</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in prendas %}
+            <tr>
+                <td>{{ p.nombre }}</td>
+                <td>{{ p.categoria }}</td>
+                <td>{{ p.talla }}</td>
+                <td>Bs {{ "%.2f"|format(p.precio_final()) }}</td>
+                <td>{{ p.stock }}</td>
+                <td>{{ p.fecha_ingreso }}</td>
+                <td class="{{ 'oferta' if p.en_oferta else '' }}">{{ "Sí" if p.en_oferta else "No" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+ 
+    <div class="resumen">
+        <p><strong>Valor total del stock:</strong> Bs {{ "%.2f"|format(valor_total) }}</p>
+        <p><strong>Unidades en inventario:</strong> {{ unidades }}</p>
+        <p><strong>Prendas en oferta:</strong> {{ en_oferta }}</p>
+    </div>
+</body>
+</html>
