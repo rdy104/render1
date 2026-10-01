@@ -9,9 +9,9 @@ app = Flask(__name__)
 # ---- Mismo modelo de siempre: ni Prenda ni Inventario se tocaron ----
 inventario = Inventario()
 if not inventario.prendas:
-    inventario.agregar(Prenda("Camisa de lino", 180.0, "Camisa", "M", 10, "01/09/2026"))
-    inventario.agregar(Prenda("Jean clásico", 250.0, "Pantalón", "L", 8, "02/09/2026", en_oferta=True))
-    inventario.agregar(Prenda("Chaqueta de cuero", 620.0, "Chaqueta", "XL", 3, "03/09/2026"))
+    inventario.agregar(Prenda("Camisa de lino", 900.0, "Camisa", "M", 10, "01/09/2026"))
+    inventario.agregar(Prenda("Jean clásico", 900.0, "Pantalón", "L", 8, "02/09/2026", en_oferta=True))
+    inventario.agregar(Prenda("Chaqueta de cuero", 900.0, "Chaqueta", "XL", 3, "03/09/2026"))
  
  
 @app.route("/")
